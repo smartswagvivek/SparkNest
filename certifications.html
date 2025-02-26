@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkNest - Certifications</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
+            color: #36404d;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        nav {
+            animation: slideDown 0.8s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+        }
+
+        .fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.5s ease-out, transform 0.5s ease-out;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Scroll to Top Button Styles */
+        #scrollToTopBtn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: #1d4ed8; /* Blue color */
+            color: white;
+            border: none;
+            border-radius: 5px;
+            padding: 10px 15px;
+            cursor: pointer;
+            display: none; /* Initially hidden */
+            transition: opacity 0.3s ease;
+            opacity: 0.8;
+        }
+
+        #scrollToTopBtn:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+
+    <script>
+        // Disable Right Click
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+        });
+
+        // Disable Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "F12" || 
+                (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) ||
+                (event.ctrlKey && event.key === "U")) {
+                event.preventDefault();
+            }
+        });
+
+        // Disable Developer Tools
+        (function() {
+            let devtoolsOpen = false;
+            const element = new Image();
+            Object.defineProperty(element, 'id', {
+                get: function() {
+                    devtoolsOpen = true;
+                    throw new Error("Developer Tools Detected!");
+                }
+            });
+
+            setInterval(() => {
+                devtoolsOpen = false;
+                console.log(element);
+                if (devtoolsOpen) {
+                    document.body.innerHTML = "<h1 style='text-align:center; margin-top:50px; color:red;'>Developer Tools are Disabled 🚫</h1>";
+                }
+            }, 1000);
+        })();
+    </script>
+    <!-- Navbar -->
+    <nav class="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md bg-blue-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 py-4 md:top-6 md:rounded-3xl lg:max-w-screen-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold pl-10">SparkNest</a>
+            <div>
+                <div class="nav-links">
+                    <a href="index.html" class="mx-4 hover:underline">Home</a>
+                    <a href="about.html" class="mx-4 hover:underline">About Me</a>
+                    <a href="skills.html" class="mx-4 hover:underline">Skills</a>
+                    <a href="projects.html" class="mx-4 hover:underline">Projects</a>
+                    <a href="certifications.html" class="mx-4 hover:underline">Certifications</a>
+                    <a href="contact.html" class="mx-4 hover:underline">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <br>
+
+    <!-- Certificates Section -->
+    <div class="max-w-5xl mx-auto bg-white p-6 rounded-lg shadow-lg mt-20">
+        <h2 class="text-3xl font-bold text-center mb-6 text-blue-600"><u>Certificates</u></h2>
+        <p class="text-center text-gray-700 mb-6">Below are the certificates I have earned, showcasing my skills and knowledge in various domains.</p>
+
+        <div class="space-y-6">
+            <!-- Certificate Entries -->
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Java FullStack with React JS and AI</h3>
+                    <p class="text-gray-600 mt-2">Issued by: Brain O Vision</p>
+                    <p class="text-gray-600 mt-2">Date: January 2025</p>
+                </div>
+                <button onclick="openModal('1.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">CTF Participation</h3>
+                    <p class="text-gray-600 mt-2">Issued by: DSATM</p>
+                    <p class="text-gray-600 mt-2">Date: December 2024</p>
+                </div>
+                <button onclick="openModal('2.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Programming in Java</h3>
+                    <p class="text-gray-600 mt-2">Issued by: NPTEL</p>
+                    <p class="text-gray-600 mt-2">Date: November 2024</p>
+                </div>
+                <button onclick="openModal('3.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Software Quality Contest</h3>
+                    <p class="text-gray-600 mt-2">Issued by: TECHGIG</p>
+                    <p class="text-gray-600 mt-2">Date: November 2024</p>
+                </div>
+                <button onclick="openModal('4.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Naukri Campus YOUNG TURKS</h3>
+                    <p class="text-gray-600 mt-2">Issued by: Naukri Campus</p>
+                    <p class="text-gray-600 mt-2">Date: October 2024</p>
+                </div>
+                <button onclick="openModal('5.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Operating System Basics</h3>
+                    <p class="text-gray-600 mt-2">Issued by: Cisco Networking Academy</p>
+                    <p class="text-gray-600 mt-2">Date: April 2024</p>
+                </div>
+                <button onclick="openModal('14.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">100 Days of Code: Python</h3>
+                    <p class="text-gray-600 mt-2">Issued by: Udemy</p>
+                    <p class="text-gray-600 mt-2">Date: October 2024</p>
+                </div>
+                <button onclick="openModal('6.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Galactic Problem Solver</h3>
+                    <p class="text-gray-600 mt-2">Issued by: ISRO</p>
+                    <p class="text-gray-600 mt-2">Date: October 2024</p>
+                </div>
+                <button onclick="openModal('7.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Java Programming</h3>
+                    <p class="text-gray-600 mt-2">Issued by: Udemy</p>
+                    <p class="text-gray-600 mt-2">Date: September 2024</p>
+                </div>
+                <button onclick="openModal('8.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Introduction to UI Design</h3>
+                    <p class="text-gray-600 mt-2">Issued by: Coursera</p>
+                    <p class="text-gray-600 mt-2">Date: December 2023</p>
+                </div>
+                <button onclick="openModal('13.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Data Base Management System</h3>
+                    <p class="text-gray-600 mt-2">Issued by: NPTEL</p>
+                    <p class="text-gray-600 mt-2">Date: October 2024</p>
+                </div>
+                <button onclick="openModal('9.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Data Structure and Algorithm</h3>
+                    <p class="text-gray-600 mt-2">Issued by: Udemy</p>
+                    <p class="text-gray-600 mt-2">Date: October 2024</p>
+                </div>
+                <button onclick="openModal('10.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">TCS iON Career Edge - Young Professional</h3>
+                    <p class="text-gray-600 mt-2">Issued by: TCSION</p>
+                    <p class="text-gray-600 mt-2">Date: July 2024</p>
+                </div>
+                <button onclick="openModal('11.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Data Visualization</h3>
+                    <p class="text-gray-600 mt-2">Issued by: TATA</p>
+                    <p class="text-gray-600 mt-2">Date: March 2024</p>
+                </div>
+                <button onclick="openModal('15.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Data Base and SQL</h3>
+                    <p class="text-gray-600 mt-2">Issued by: InfyspringBoard</p>
+                    <p class="text-gray-600 mt-2">Date: July 2024</p>
+                </div>
+                <button onclick="openModal('12.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Kere Habba</h3>
+                    <p class="text-gray-600 mt-2">Issued by: WCG</p>
+                    <p class="text-gray-600 mt-2">Date: October 2024</p>
+                </div>
+                <button onclick="openModal('16.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+
+            <div class="bg-gray-100 p-5 rounded-lg shadow-md flex justify-between items-center fade-in card">
+                <div>
+                    <h3 class="text-xl font-bold text-blue-600">Hackathon</h3>
+                    <p class="text-gray-600 mt-2">Issued by: DSATM</p>
+                    <p class="text-gray-600 mt-2">Date: July 2024</p>
+                </div>
+                <button onclick="openModal('17.png')" class="ml-4 bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition-colors">View Certificate</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal for Viewing Image -->
+    <div id="imageModal" class="modal flex">
+        <span onclick="closeModal()" class="absolute top-4 right-4 text-white cursor-pointer text-2xl">&times;</span>
+        <img id="modalImage" class="modal-content" src="" alt="Certificate">
+        <button onclick="closeModal()" class="absolute bottom-6 left-6 bg-red-600 text-white py-2 px-4 rounded">Back</button>
+    </div>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hidden">↑</button>
+
+    <footer class="bg-gray-900 text-white py-4 mt-10">
+        <div class="container mx-auto text-center">
+            <p>© 2025 SparkNest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Add fade-in effect on load
+        document.addEventListener("DOMContentLoaded", function () {
+            const certificates = document.querySelectorAll('.fade-in');
+            certificates.forEach((cert, index) => {
+                setTimeout(() => {
+                    cert.classList.add('visible');
+                }, index * 100); // Stagger the appearance
+            });
+
+            const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+            // Show/hide button on scroll
+            window.addEventListener("scroll", () => {
+                if (window.scrollY > 200) {
+                    scrollToTopBtn.style.display = "block"; // Show button
+                } else {
+                    scrollToTopBtn.style.display = "none"; // Hide button
+                }
+            });
+
+            // Scroll to top smoothly
+            scrollToTopBtn.addEventListener("click", () => {
+                window.scrollTo({
+                    top: 0,
+                    behavior: "smooth"
+                });
+            });
+        });
+
+        // Open modal with image
+        function openModal(imageSrc) {
+            document.getElementById('modalImage').src = imageSrc;
+            document.getElementById('imageModal').style.display = 'flex';
+        }
+
+        // Close modal
+        function closeModal() {
+            document.getElementById('imageModal').style.display = 'none';
+            document.getElementById('modalImage').src = ''; // Clear source to avoid flicker
+        }
+    </script>
+</body>
+
+</html>

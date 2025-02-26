@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkNest-Contact</title>
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+ 
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
+            color: #36404d;
+            animation: fadeIn 1s ease-in-out;
+        }
+        footer {
+    position: fixed;
+    bottom: 0;
+    left: 0; /* Ensures the footer starts from the left */
+    width: 100%;
+    text-align: center;
+    background-color: #111;
+    color: white;
+    padding: 10px;
+}
+
+
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        nav {
+            animation: slideDown 0.8s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from { transform: translateY(-100%); opacity: 0; }
+            to { transform: translateY(0); opacity: 1; }
+        }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+
+    <script>
+        // Disable Right Click
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+        });
+    
+        // Disable Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "F12" || 
+                (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) ||
+                (event.ctrlKey && event.key === "U")) {
+                event.preventDefault();
+            }
+        });
+    
+        // Disable Developer Tools (Prevents opening dev tools via right-click + inspect)
+        (function() {
+            let devtoolsOpen = false;
+            const element = new Image();
+            Object.defineProperty(element, 'id', {
+                get: function() {
+                    devtoolsOpen = true;
+                    throw new Error("Developer Tools Detected!");
+                }
+            });
+    
+            setInterval(() => {
+                devtoolsOpen = false;
+                console.log(element);
+                if (devtoolsOpen) {
+                    document.body.innerHTML = "<h1 style='text-align:center; margin-top:50px; color:red;'>Developer Tools are Disabled 🚫</h1>";
+                }
+            }, 1000);
+        })();
+    </script>
+    
+    <!-- Navbar -->
+    <nav class="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md bg-blue-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 py-4 md:top-6 md:rounded-3xl lg:max-w-screen-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold pl-10">SparkNest</a>
+            <div>
+                <div class="nav-links">
+                    <a href="index.html" class="mx-4 hover:underline">Home</a>
+                    <a href="about.html" class="mx-4 hover:underline">About Me</a>
+                    <a href="skills.html" class="mx-4 hover:underline">Skills</a>
+                    <a href="projects.html" class="mx-4 hover:underline">Projects</a>
+                    <a href="certifications.html" class="mx-4 hover:underline">Certifications</a>
+                    <a href="contact.html" class="mx-4 hover:underline">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    
+    <!-- Contact Form Section -->
+    <section class="flex justify-center items-center min-h-screen bg-gray-100 py-12">
+       
+        <div class="container mx-auto flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden max-w-4xl">
+            <!-- Left Side -->
+            <div class="w-full md:w-2/5 bg-blue-600 text-white p-6 flex flex-col justify-center">
+                <h2 class="text-2xl font-bold">Have Questions?</h2>
+                <h3 class="text-xl mt-2">Get in Touch!</h3>
+                <p class="mt-2">I Am always with you.</p>
+                <div class="flex space-x-4 mt-4">
+                    <a href="https://www.facebook.com/profile.php?id=100054561035925" class="text-white text-2xl"><i class="fab fa-facebook"></i></a>
+                    <a href="https://x.com/_vivek_hs__" class="text-white text-2xl"><i class="fab fa-x-twitter"></i></a>
+                    <a href="https://www.instagram.com/_vivek_hs._/?hl=en" class="text-white text-2xl"><i class="fab fa-instagram"></i></a>
+                    <a href="https://www.linkedin.com/in/vivek-hs09082004/" class="text-white text-2xl"><i class="fab fa-linkedin"></i></a>
+                    <a href="https://github.com/smartswagvivek" class="text-white text-2xl"><i class="fab fa-github"></i></a>
+                </div>
+            </div>
+
+        <!-- Contact Form -->
+<div class="w-full md:w-3/5 p-6">
+    <div class="mb-4 flex items-center bg-gray-200 p-3 rounded">
+        <i class="fas fa-user text-blue-600 mr-3"></i>
+        <input type="text" id="name" class="bg-transparent w-full focus:outline-none" placeholder="Your Name">
+    </div>
+    <div class="mb-4 flex items-center bg-gray-200 p-3 rounded">
+        <i class="fas fa-phone text-blue-600 mr-3"></i>
+        <input type="text" id="phone" class="bg-transparent w-full focus:outline-none" placeholder="Your Phone Number">
+    </div>
+    <div class="mb-4 flex items-center bg-gray-200 p-3 rounded">
+        <i class="fas fa-envelope text-blue-600 mr-3"></i>
+        <input type="email" id="email" class="bg-transparent w-full focus:outline-none" placeholder="Your Email">
+    </div>
+    <div class="mb-4 flex items-center bg-gray-200 p-3 rounded">
+        <i class="fas fa-comment text-blue-600 mr-3"></i>
+        <input type="text" id="subject" class="bg-transparent w-full focus:outline-none" placeholder="Subject">
+    </div>
+    <textarea id="message" rows="4" class="w-full p-3 bg-gray-200 rounded focus:outline-none" placeholder="Your Message"></textarea>
+    
+    <button onclick="sendMail()" class="mt-4 w-full bg-blue-600 text-white py-2 rounded hover:bg-blue-700 transition">
+        Send Message
+    </button>
+</div>
+
+<script>
+    function sendMail() {
+        let name = document.getElementById("name").value.trim();
+        let phone = document.getElementById("phone").value.trim();
+        let email = document.getElementById("email").value.trim();
+        let subject = document.getElementById("subject").value.trim();
+        let message = document.getElementById("message").value.trim();
+
+        if (!name || !email || !subject || !message) {
+            alert("Please fill in all required fields.");
+            return;
+        }
+
+        let mailSubject = encodeURIComponent(subject);
+        let mailBody = encodeURIComponent(
+            `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\n\nMessage:\n${message}`
+        );
+
+        let gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=hsvivek0908@gmail.com&su=${mailSubject}&body=${mailBody}`;
+
+        window.open(gmailLink, "_blank"); 
+
+        document.getElementById("name").value = "";
+        document.getElementById("phone").value = "";
+        document.getElementById("email").value = "";
+        document.getElementById("subject").value = "";
+        document.getElementById("message").value = "";
+    }
+</script>
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-4">
+    <div class="container mx-auto text-center">
+        <p>© 2025 SparkNest. All rights reserved.</p>
+    </div>
+</footer>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/js/all.min.js"></script>
+<script src="main.js"></script>
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hidden">
+    &uarr;
+</button>
+
+<script>
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    // Show/hide button on scroll
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 200) {
+            scrollToTopBtn.classList.remove("hidden");
+        } else {
+            scrollToTopBtn.classList.add("hidden");
+        }
+    });
+
+    // Scroll to top smoothly
+    scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

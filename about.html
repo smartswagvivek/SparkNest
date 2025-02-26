@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkNest-About Me</title>
+   
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+
+
+
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+ 
+         body {
+             font-family: 'Roboto', sans-serif;
+             background-color: #f3f4f6;
+             color: #36404d;
+             animation: fadeIn 1s ease-in-out;
+         }
+ 
+         @keyframes fadeIn {
+             from { opacity: 0; }
+             to { opacity: 1; }
+         }
+ 
+         nav {
+             animation: slideDown 0.8s ease-in-out;
+         }
+ 
+         @keyframes slideDown {
+             from { transform: translateY(-100%); opacity: 0; }
+             to { transform: translateY(0); opacity: 1; }
+         }
+ 
+         .flicker-text {
+             animation: flicker 1.5s infinite alternate;
+         }
+ 
+         @keyframes flicker {
+             0% { opacity: 1; }
+             50% { opacity: 0.6; }
+             100% { opacity: 1; }
+         }
+ 
+         .glass-effect {
+             background: rgba(255, 255, 255, 0.15);
+             backdrop-filter: blur(10px);
+             border: 1px solid rgba(255, 255, 255, 0.2);
+             animation: fadeIn 1s ease-in-out;
+         }
+ 
+         .btn-hover {
+             transition: transform 0.3s ease, box-shadow 0.3s ease;
+         }
+ 
+         .btn-hover:hover {
+             transform: scale(1.05);
+             box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+         }
+ 
+         footer {
+             animation: fadeIn 1s ease-in-out;
+         }
+         .text-justify {
+    text-align: justify;
+}
+
+     </style>
+</head>
+<body class="bg-white text-gray-800">
+    <script>
+        // Disable Right Click
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+        });
+    
+        // Disable Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "F12" || 
+                (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) ||
+                (event.ctrlKey && event.key === "U")) {
+                event.preventDefault();
+            }
+        });
+    
+        // Disable Developer Tools (Prevents opening dev tools via right-click + inspect)
+        (function() {
+            let devtoolsOpen = false;
+            const element = new Image();
+            Object.defineProperty(element, 'id', {
+                get: function() {
+                    devtoolsOpen = true;
+                    throw new Error("Developer Tools Detected!");
+                }
+            });
+    
+            setInterval(() => {
+                devtoolsOpen = false;
+                console.log(element);
+                if (devtoolsOpen) {
+                    document.body.innerHTML = "<h1 style='text-align:center; margin-top:50px; color:red;'>Developer Tools are Disabled 🚫</h1>";
+                }
+            }, 1000);
+        })();
+    </script>
+    <div>
+         
+    <!-- Navbar -->
+    <nav class="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md bg-blue-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 py-4 md:top-6 md:rounded-3xl lg:max-w-screen-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold pl-10">SparkNest</a>
+            <div>
+                <div class="nav-links">
+                    <a href="index.html" class="mx-4 hover:underline">Home</a>
+                    <a href="about.html" class="mx-4 hover:underline">About Me</a>
+                    <a href="skills.html" class="mx-4 hover:underline">Skills</a>
+                    <a href="projects.html" class="mx-4 hover:underline">Projects</a>
+                    <a href="certifications.html" class="mx-4 hover:underline">Certifications</a>
+                    <a href="contact.html" class="mx-4 hover:underline">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+<!-- Include Framer Motion -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.15.2/framer-motion.umd.min.js"></script>
+
+<!-- About Me Section -->
+<section class="flex justify-center items-center min-h-screen bg-gray-100 py-32"
+    x-data="{ show: false }" x-init="setTimeout(() => show = true, 200)">
+    
+    <div class="w-full max-w-4xl p-8 md:p-10 bg-white shadow-xl rounded-2xl text-center backdrop-filter backdrop-blur-lg bg-opacity-90 border border-gray-200 transition-all duration-500 transform"
+        :class="show ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+        
+        <!-- Name & Title -->
+        <h1 class="text-4xl font-bold text-gray-900">Vivek H S</h1>
+        <p class="text-gray-700 text-lg mt-2 font-semibold">Futuristic Code Crafter | Aspiring Software Engineer</p>
+        <p class="text-gray-600 mt-2 italic">"Solving Real-World Problems with AI-Driven, Creative, and Logical Tech Solutions."</p>
+        
+        <!-- Description -->
+        <div class="mt-6 text-gray-700 text-md text-left leading-relaxed space-y-4 text-justify"
+            x-data="{ showText: false }" x-init="setTimeout(() => showText = true, 400)">
+            
+            <p class="transition-all duration-700" :class="showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                I am a passionate software engineer with a keen interest in <span class="font-semibold">full-stack development, data structures, and problem-solving.</span> 
+                Currently, I am exploring <span class="font-semibold">web development and AI-driven applications</span>. 
+                My goal is to solve real-world problems with AI-driven solutions, blending creativity and logic.
+            </p>
+            <p class="transition-all duration-700 delay-200" :class="showText ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                I’m currently learning <span class="font-semibold">Artificial Intelligence and Full-Stack Development</span>, aiming to create innovative solutions 
+                that turn challenges into opportunities. Let’s talk about <span class="font-semibold">AI, Full-Stack Development, Programming, Data Structures, and Algorithms!</span>
+            </p>
+        </div>
+        
+        <!-- Button with Hover Effect -->
+        <div class="mt-8">
+            <a href="projects.html" class="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700 transform hover:scale-105 transition duration-300">
+                View My Work 🚀
+            </a>
+        </div>
+        
+        <!-- Divider -->
+        <div class="border-t-2 border-gray-300 w-2/3 mx-auto my-8"></div>
+        
+        <!-- Education Section -->
+        <h2 class="text-2xl font-bold mb-6 text-gray-900"><u>Education</u> 🎓</h2>
+        <div class="text-left text-gray-800 space-y-6"
+            x-data="{ showEdu: false }" x-init="setTimeout(() => showEdu = true, 600)">
+            
+            <div class="transition-all duration-700" :class="showEdu ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                <h3 class="font-semibold text-lg">Dayananda Sagar Academy of Technology and Management, Bangalore</h3>
+                <p class="text-sm text-gray-600">Bachelor of Engineering in Information Science and Engineering (2022-2026)</p>
+                <p class="text-sm font-semibold text-blue-600">Current CGPA: 8.9</p>
+            </div>
+            <div class="transition-all duration-700 delay-200" :class="showEdu ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                <h3 class="font-semibold text-lg">SAV Composite PU College, Bhadravathi</h3>
+                <p class="text-sm text-gray-600">12th Grade (April 2022)</p>
+                <p class="text-sm font-semibold text-blue-600">Marks: 560 / 600 &nbsp;&nbsp;(93.33%)</p>
+            </div>
+            <div class="transition-all duration-700 delay-400" :class="showEdu ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'">
+                <h3 class="font-semibold text-lg">SAV English High School, Bhadravathi</h3>
+                <p class="text-sm text-gray-600">10th Grade (June/July 2020)</p>
+                <p class="text-sm font-semibold text-blue-600">Marks: 572 / 625  &nbsp;&nbsp;(91.52%)</p>
+            </div>
+        </div>
+
+        <!-- Personal Details Table with Animation -->
+        <div class="border-t-2 border-gray-300 w-2/3 mx-auto my-8"></div>
+
+        <h2 class="text-2xl font-bold text-center text-gray-900 mb-4"><u>Personal Details</u></h2>
+
+        <div class="flex justify-center"
+            x-data="{ showTable: false }" x-init="setTimeout(() => showTable = true, 800)">
+            
+            <table class="w-auto border border-gray-300 text-left text-gray-700 shadow-md rounded-lg transform transition-all duration-700"
+                :class="showTable ? 'opacity-100 scale-100' : 'opacity-0 scale-90'">
+                
+                <tbody>
+                    <tr class="border-b">
+                        <td class="py-2 px-6 font-semibold text-blue-600">Name:</td>
+                        <td class="py-2 px-6">VIVEK H S</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-2 px-6 font-semibold text-blue-600">Age:</td>
+                        <td class="py-2 px-6">21</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-2 px-6 font-semibold text-blue-600">Date of Birth:</td>
+                        <td class="py-2 px-6">August 9, 2004</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-2 px-6 font-semibold text-blue-600">Gender:</td>
+                        <td class="py-2 px-6">Male</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-2 px-6 font-semibold text-blue-600">City:</td>
+                        <td class="py-2 px-6">Bengaluru</td>
+                    </tr>
+                    <tr class="border-b">
+                        <td class="py-2 px-6 font-semibold text-blue-600">Languages:</td>
+                        <td class="py-2 px-6">English, Kannada, Hindi</td>
+                    </tr>
+                    <tr>
+                        <td class="py-2 px-6 font-semibold text-blue-600">Qualifications:</td>
+                        <td class="py-2 px-6">B.E in Information Science and Engineering</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+    </div>
+</section>
+
+
+<!-- Footer -->
+<footer class="bg-gray-900 text-white py-4">
+    <div class="container mx-auto text-center">
+        <p>© 2025 SparkNest. All rights reserved.</p>
+    </div>
+</footer>
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hidden">
+    &uarr;
+</button>
+
+<script>
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    // Show/hide button on scroll
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 200) {
+            scrollToTopBtn.classList.remove("hidden");
+        } else {
+            scrollToTopBtn.classList.add("hidden");
+        }
+    });
+
+    // Scroll to top smoothly
+    scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
+
+</body>
+</html>

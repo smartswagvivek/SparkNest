@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkNest - Projects</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f3f4f6;
+            color: #36404d;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+            }
+
+            to {
+                opacity: 1;
+            }
+        }
+
+        nav {
+            animation: slideDown 0.8s ease-in-out;
+        }
+
+        @keyframes slideDown {
+            from {
+                transform: translateY(-100%);
+                opacity: 0;
+            }
+
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        footer {
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        .project-card {
+            transition: transform 0.3s ease;
+        }
+
+        .project-card:hover {
+            transform: scale(1.05);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+
+        h3 {
+            margin-bottom: 15px; /* Add space below the heading */
+        }
+    </style>
+</head>
+
+<body class="bg-white text-gray-800">
+
+    <script>
+        // Prevent right-click and certain keyboard shortcuts
+        document.addEventListener("contextmenu", event => event.preventDefault());
+        document.addEventListener("keydown", event => {
+            if (event.key === "F12" || (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) || (event.ctrlKey && event.key === "U")) {
+                event.preventDefault();
+            }
+        });
+
+        // Disable Developer Tools detection
+        (function () {
+            let devtoolsOpen = false;
+            const element = new Image();
+            Object.defineProperty(element, 'id', {
+                get: function () {
+                    devtoolsOpen = true;
+                    throw new Error("Developer Tools Detected!");
+                }
+            });
+
+            setInterval(() => {
+                devtoolsOpen = false;
+                console.log(element);
+                if (devtoolsOpen) {
+                    document.body.innerHTML = "<h1 style='text-align:center; margin-top:50px; color:red;'>Developer Tools are Disabled 🚫</h1>";
+                }
+            }, 1000);
+        })();
+    </script>
+
+    <!-- Navbar -->
+    <nav class="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-lg bg-blue-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 py-4">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold pl-10">SparkNest</a>
+            <div class="nav-links">
+                <a href="index.html" class="mx-4 hover:underline">Home</a>
+                <a href="about.html" class="mx-4 hover:underline">About Me</a>
+                <a href="skills.html" class="mx-4 hover:underline">Skills</a>
+                <a href="projects.html" class="mx-4 hover:underline">Projects</a>
+                <a href="certifications.html" class="mx-4 hover:underline">Certifications</a>
+                <a href="contact.html" class="mx-4 hover:underline">Contact</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="projects" class="projects-section bg-gray-100 p-8"><br><br>
+        <div class="container mx-auto text-center">
+            
+        <h1 class="text-4xl font-bold text-center mb-6 text-blue-600"><u>Projects</u></h1>
+        <div class="projects-container max-w-3xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-6">
+
+            <!-- Project 1 -->
+            <div class="project-card bg-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+                <img src="p1.png" alt="Calsi" class="rounded-lg">
+                <h3 class="text-xl font-semibold text-center text-blue-600">Simple Calculator using Python</h3>
+                <p class="text-blue-600 text-justify">Developed a project which is a Simple Calculator 🧮 built using the Tkinter library. It supports basic arithmetic operations ➕➖✖️➗ and features a user-friendly graphical interface 🎨. The calculator also includes a backspace ⬅️ function to remove the last entered character, ensuring easy corrections. 🚀</p>
+                <div class="flex justify-center">
+                    <a href="https://github.com/smartswagvivek/SimpleCalsi-" class="read-more bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-4" target="_blank">Read More</a>
+                </div>
+            </div>
+
+            <!-- Project 2 -->
+            <div class="project-card bg-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+                <img src="p2.png" alt="Claritycove" class="rounded-lg"><br>
+                <h3 class="text-xl font-semibold text-center text-blue-600">ClarityCove</h3>
+                <p class="text-blue-600 text-justify">Developed a ClarityCove ChatBot 🤖 which is a smart learning assistant that recommends courses 📚 based on user interests and goals 🎯. It helps users explore structured learning roadmaps 🗺️, track progress 📊, and stay on the right path ✅. With interactive chats 💬 and personalized suggestions ✨, it simplifies learning and makes skill-building more effective and engaging 🚀.</p>
+                <div class="flex justify-center">
+                    <a href="https://github.com/smartswagvivek/Claritycove" class="read-more bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-4" target="_blank">Read More</a>
+                </div>
+            </div>
+
+            <!-- Project 3 -->
+            <div class="project-card bg-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+                <img src="p3.png" alt="Airline Management Database" class="rounded-lg">
+                <h3 class="text-xl font-semibold text-center text-blue-600">Airline Management Database</h3>
+                <p class="text-blue-600 text-justify">Developed a database system to optimize airline operations, covering ticket reservations 🎫, flight scheduling 🛫, and passenger management 👨‍✈️. The system enables efficient data storage and retrieval, improving the overall booking experience.</p>
+                <div class="flex justify-center">
+                    <a href="https://github.com/smartswagvivek/AirLine-Database" class="read-more bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-4">Read More</a>
+                </div>
+            </div>
+
+            <!-- Project 4 -->
+            <div class="project-card bg-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+                <img src="p4.png" alt="Inventory Management" class="rounded-lg"><br>
+                <h3 class="text-xl font-semibold text-center text-blue-600">Resource-Vault</h3>
+                <p class="text-blue-600 text-justify">Designed a database system for efficiently tracking inventory 📦 in a college 🏫. It helps manage stock levels 📊, optimize supply chain operations 🔄, and prevent overstocking or shortages ⚖️. This system ensures smooth and organized inventory management. ✅</p>
+                <div class="flex justify-center">
+                    <a href="https://github.com/smartswagvivek/Resource_Vault" class="read-more bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-4" target="_blank">Read More</a>
+                </div>
+            </div>
+
+            <!-- Project 5 -->
+            <div class="project-card bg-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+                <img src="ai.png" alt="Jarvis" class="rounded-lg">
+                <h3 class="text-xl font-semibold text-center text-blue-600">ECHO A Virtual voice Assistant</h3>
+                <p class="text-blue-600 text-justify">Developed E.C.H.O 🗣️, a JavaScript-based AI voice assistant designed to boost productivity ⚡ by automating tasks ✅, answering queries ❓, controlling system functions 💻, playing music 🎵, performing web searches 🌐, and much more! 🚀💡</p>
+                <div class="flex justify-center">
+                    <a href="https://github.com/smartswagvivek/Echo" class="read-more bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-4" target="_blank">Read More</a>
+                </div>
+            </div>
+
+            <!-- Project 6 -->
+            <div class="project-card bg-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+                <img src="p6.png" alt="Power BI" class="rounded-lg"><br>
+                <h3 class="text-xl font-semibold text-center text-blue-600">Data Visualization with Power BI</h3>
+                <p class="text-blue-600 text-justify">Created an interactive Netflix Dashboard 📊 using Power BI to analyze viewing trends, user engagement, and content performance. 🎬🔍 The dashboard transforms raw data into meaningful visual insights, helping understand audience preferences and support data-driven decisions. 🚀</p>
+                <div class="flex justify-center">
+                    <a href="https://github.com/smartswagvivek/Netflix-Dashboard" class="read-more bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-4" target="_blank">Read More</a>
+                </div>
+            </div>
+
+            <!-- Project 7 -->
+            <div class="project-card bg-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+                <img src="p7.png" alt="Tableau" class="rounded-lg"><br>
+                <h3 class="text-xl font-semibold text-center text-blue-600">Data Visualization with Tableau</h3>
+                <p class="text-blue-600 text-justify">Created an interactive Amazon Prime Dashboard 📊 using Tableau to analyze user engagement, streaming trends, and content performance. 🎥🔍 The dashboard provides insightful visualizations, helping businesses understand viewer preferences and optimize content strategies for better decision-making. 🚀</p>
+                <div class="flex justify-center">
+                    <a href="https://github.com/smartswagvivek/AmazonDashboard" class="read-more bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-4" target="_blank">Read More</a>
+                </div>
+            </div>
+
+            <!-- Project 8 -->
+            <div class="project-card bg-white p-6 rounded-lg shadow-md flex flex-col justify-between">
+                <img src="p8.png" alt="Health" class="rounded-lg">
+                <h3 class="text-xl font-semibold text-center text-blue-600">Healthcare-Prediction in ML</h3>
+                <p class="text-blue-600 text-justify">Developed a machine learning-based health prediction system 🤖 to predict the likelihood of diabetes 🩺 using clinical data like glucose levels, BMI, age, and family history 📊. This system assists healthcare providers in early diagnosis and effective management ⚕️, improving patient care. 🚀</p>
+                <div class="flex justify-center">
+                    <a href="https://github.com/smartswagvivek/Healthcare-Prediction" class="read-more bg-blue-600 text-white py-2 px-4 rounded hover:bg-blue-700 transition mt-4" target="_blank">Read More</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-white py-4">
+        <div class="container mx-auto text-center">
+            <p>© 2025 SparkNest. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <!-- Scroll to Top Button -->
+    <button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hidden">
+        &uarr;
+    </button>
+
+    <script>
+        const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+        // Show/hide button on scroll
+        window.addEventListener("scroll", () => {
+            if (window.scrollY > 200) {
+                scrollToTopBtn.classList.remove("hidden");
+            } else {
+                scrollToTopBtn.classList.add("hidden");
+            }
+        });
+
+        // Scroll to top smoothly
+        scrollToTopBtn.addEventListener("click", () => {
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+        });
+    </script>
+</body>
+
+</html>

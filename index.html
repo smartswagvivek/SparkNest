@@ -1,0 +1,374 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SparkNest</title>
+    
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <style>
+       @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+
+    body {
+        font-family: 'Roboto', sans-serif;
+        background-color: #f3f4f6;
+        color: #36404d;
+        animation: fadeIn 1s ease-in-out;
+    }
+
+
+    @keyframes flicker {
+        0% { opacity: 1; }
+        25% { opacity: 0.7; }
+        50% { opacity: 1; }
+        75% { opacity: 0.5; }
+        100% { opacity: 1; }
+    }
+
+    .profile-image {
+        animation: flicker 1.5s infinite alternate ease-in-out;
+    }
+
+    /* Fade-in animation */
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Navbar animation */
+    nav {
+        animation: slideDown 0.8s ease-in-out;
+    }
+
+    @keyframes slideDown {
+        from { transform: translateY(-100%); opacity: 0; }
+        to { transform: translateY(0); opacity: 1; }
+    }
+
+    /* Intro text animation */
+    .intro h1, .intro h2, .intro p {
+        opacity: 0;
+        transform: translateY(20px);
+        animation: fadeSlideUp 1s ease-in-out forwards;
+    }
+
+    .intro h1 { animation-delay: 0.2s; }
+    .intro h2 { animation-delay: 0.4s; }
+    .intro p { animation-delay: 0.6s; }
+
+    @keyframes fadeSlideUp {
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Button animation */
+    .buttons {
+        opacity: 0;
+        animation: fadeIn 1s ease-in-out forwards;
+        animation-delay: 1s;
+    }
+
+    /* Profile image animation */
+    .profile-image {
+        transform: scale(0.8);
+        opacity: 0;
+        animation: scaleFadeIn 1s ease-in-out forwards;
+        animation-delay: 0.8s;
+    }
+
+    @keyframes scaleFadeIn {
+        from { transform: scale(0.8); opacity: 0; }
+        to { transform: scale(1); opacity: 1; }
+    }
+
+    /* Footer animation */
+    .footer {
+        opacity: 0;
+        transform: translateY(30px);
+        animation: fadeSlideUp 1s ease-in-out forwards;
+        animation-delay: 1.2s;
+    }
+    </style>
+</head>
+<body class="bg-white text-gray-800">
+    <script>
+        // Disable Right Click
+        document.addEventListener("contextmenu", function(event) {
+            event.preventDefault();
+        });
+    
+        // Disable Keyboard Shortcuts (F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+U)
+        document.addEventListener("keydown", function(event) {
+            if (event.key === "F12" || 
+                (event.ctrlKey && event.shiftKey && (event.key === "I" || event.key === "J")) ||
+                (event.ctrlKey && event.key === "U")) {
+                event.preventDefault();
+            }
+        });
+    
+        // Disable Developer Tools (Prevents opening dev tools via right-click + inspect)
+        (function() {
+            let devtoolsOpen = false;
+            const element = new Image();
+            Object.defineProperty(element, 'id', {
+                get: function() {
+                    devtoolsOpen = true;
+                    throw new Error("Developer Tools Detected!");
+                }
+            });
+    
+            setInterval(() => {
+                devtoolsOpen = false;
+                console.log(element);
+                if (devtoolsOpen) {
+                    document.body.innerHTML = "<h1 style='text-align:center; margin-top:50px; color:red;'>Developer Tools are Disabled 🚫</h1>";
+                }
+            }, 1000);
+        })();
+    </script>
+<div>
+    <!-- Navbar -->
+    <nav class="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md bg-blue-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 py-4 md:top-6 md:rounded-3xl lg:max-w-screen-lg">
+        <div class="container mx-auto flex justify-between items-center">
+            <a href="index.html" class="text-2xl font-bold pl-10">SparkNest</a>
+            <div>
+                <div class="nav-links">
+                    <a href="index.html" class="mx-4 hover:underline">Home</a>
+                    <a href="about.html" class="mx-4 hover:underline"> About Me</a>
+                    <a href="skills.html" class="mx-4 hover:underline">Skills</a>
+                    <a href="projects.html" class="mx-4 hover:underline">Projects</a>
+                    <a href="certifications.html" class="mx-4 hover:underline">Certifications</a>
+                    <a href="contact.html" class="mx-4 hover:underline">Contact</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+            let elements = [
+                { selector: ".intro h1", text: "Hello!, I am VIVEK H S" },
+                { selector: ".intro h2", text: "Engineering Student from DSATM College" },
+                { selector: ".intro p", text: 
+                    "I love solving real-world problems using AI, combining creativity and logic.<br>" +
+                    "I'm eager to learn, grow, and apply technology to make a meaningful impact.<br>" +
+                    "Looking for opportunities to develop my skills in a professional environment."
+                }
+            ];
+
+            function typeWriter(element, text, i = 0, callback) {
+                if (i < text.length) {
+                    if (text.substring(i, i + 4) === "<br>") {
+                        element.innerHTML += "<br>";
+                        i += 3; 
+                    } else {
+                        element.innerHTML += text.charAt(i);
+                    }
+                    setTimeout(() => typeWriter(element, text, i + 1, callback), 40);
+                } else if (callback) {
+                    setTimeout(callback, 500);
+                }
+            }
+
+            function startTyping(index = 0) {
+                if (index < elements.length) {
+                    let el = document.querySelector(elements[index].selector);
+                    el.innerHTML = "";
+                    typeWriter(el, elements[index].text, 0, () => startTyping(index + 1));
+                } else {
+                    document.querySelector(".buttons").classList.remove("hidden");
+                    document.querySelector(".buttons").classList.add("fade-in");
+                }
+            }
+
+            startTyping();
+        });
+    </script>
+
+</script>
+    
+<style>
+    .fade-in {
+        opacity: 0;
+        animation: fadeIn 1s forwards;
+    }
+
+    footer {
+    position: fixed;
+    bottom: 0;
+    left: 0; /* Ensures the footer starts from the left */
+    width: 100%;
+    text-align: center;
+    background-color: #111;
+    color: white;
+    padding: 5px;
+}
+
+    @keyframes fadeIn {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+
+    /* Increased text size */
+    .intro h1 {
+        font-size: 3.0rem;  /* Increased from 4xl to 5xl */
+        font-weight: bold;
+    }
+
+    .intro h2 {
+        font-size: 1.8rem;  /* Increased from 2xl to 3xl */
+        color: #4a5568; /* Gray-600 */
+        margin-top: 10px;
+    }
+
+    .intro p {
+        font-size: 1.3rem;  /* Increased from lg to xl */
+        color: #6b7280; /* Gray-500 */
+        margin-top: 15px;
+        line-height: 1.8;
+    }
+
+    .buttons a {
+        font-size: 1.0rem;  /* Slightly increased button text */
+        padding: 12px 20px;
+    }
+</style>
+</head>
+<body>
+
+<section class="flex flex-col-reverse md:flex-row items-center justify-center mt-24 py-20">
+    <!-- Left Side: Text Content -->
+    <div class="text-center md:text-left intro w-full md:w-1/2">
+        <h1></h1>
+        <h2></h2>
+        <p></p>
+
+            <!-- Buttons Section (Initially Hidden) -->
+            <div class="buttons hidden mt-6 flex flex-col md:flex-row gap-4">
+                <!-- Let's Talk Button -->
+                <a href="contact.html" class="px-4 py-2 text-white bg-blue-600 rounded-md hover:bg-blue-700 transition">
+                    Let's Talk
+                </a>
+
+                <!-- Resume Button -->
+                <a href="https://drive.google.com/file/d/1uXZpD6woqZDSIDGOVZnuvj0kkWm1B5n1/view?usp=sharing" 
+                   target="_blank" 
+                   class="px-4 py-2 text-white bg-gray-700 rounded-md hover:bg-gray-800 transition">
+                    Resume
+                </a>
+            </div>
+        </div>
+        
+        <!-- Right Side: Profile Image -->
+        <div class="relative w-72 h-72 md:w-96 md:h-96 ml-12">
+            <div class="absolute inset-0 bg-blue-600 rounded-full clip-shape"></div>
+            <img src="https://media.licdn.com/dms/image/v2/D5603AQEfSbw_8Ojdbw/profile-displayphoto-shrink_400_400/profile-displayphoto-shrink_400_400/0/1711370921351?e=1746057600&v=beta&t=S9LvW1hOuxynkli4_aEBtK7UOndoslKt8YnoNrixgcg" 
+                 alt="Vivek H S" class="relative w-full h-full object-cover rounded-full">
+        </div>
+    </section>
+    <br><br><br><br><br><br>
+
+   
+    <!-- Footer Section -->
+    <section class="footer bg-gray-900 text-white py-10">
+        <div class="container mx-auto grid md:grid-cols-3 gap-8 text-center md:text-left">
+            <!-- Find Us -->
+            <div>
+                <h2 class="text-xl font-bold mb-4">FIND ME</h2>
+                <p>&#127968;&nbsp;Udipalya,Kanakpura Road,Bengaluru-560082</p>
+                <p>&#128231;&nbsp;hsvivek0908@gmail.com</p>
+                <p>&#9990;&nbsp;+91 7204735362</p>
+            </div>
+            <!-- Useful Links -->
+            <div>
+                <h2 class="text-xl font-bold mb-4">USEFUL LINKS</h2>
+                <ul class="space-y-2">
+                    <li><a href="index.html" class="hover:underline">Home</a></li>
+                    <li><a href="about.html" class="hover:underline">About Me</a></li>
+                    <li><a href="skills.html" class="hover:underline">Skills</a></li>
+                    <li><a href="projects.html" class="hover:underline">Projects</a></li>
+                    <li><a href="certifications.html" class="hover:underline">Certifications</a></li>
+                    <li><a href="contact.html" class="hover:underline">Contact</a></li>
+                    <br>
+                </ul>
+            </div>
+            
+
+<!--Queries -->
+
+<form id="contactForm" onsubmit="sendMail(event)">
+    <h2 class="text-xl font-bold mb-2">YOUR QUERIES</h2>
+    <input type="text" id="name" placeholder="Enter your name" class="w-2/3 p-1 mb-1 rounded text-black text-sm"  required><br>
+    <input type="email" id="email" placeholder="Enter your email" class="w-2/3 p-1 mb-1 rounded text-black text-sm" required><br>
+
+    <button type="submit" class="bg-blue-500 text-white px-4 py-1 rounded hover:bg-blue-600">
+        SUBMIT YOUR MESSAGE
+    </button>
+</form>
+
+
+
+<footer class="bg-gray-900 text-white py-4">
+    <div class="container mx-auto flex justify-center w-full">
+        <p class="text-center">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;© 2025 SparkNest. All rights reserved.</p>
+    </div>
+</footer>
+
+<script>
+    function sendMail() {
+        let name = document.getElementById("name").value.trim();
+        let email = document.getElementById("email").value.trim();
+
+        if (!name || !email) {
+            alert("Please fill in all fields before submitting.");
+            return;
+        }
+
+        let subject = encodeURIComponent("User Query");
+        let body = encodeURIComponent(`Name: ${name}\nEmail: ${email}`);
+
+        let gmailLink = `https://mail.google.com/mail/?view=cm&fs=1&to=hsvivek0908@gmail.com&su=${subject}&body=${body}`;
+        
+        window.open(gmailLink, "_blank"); 
+    }
+</script>
+
+
+
+
+
+                
+            
+
+
+    <script src="main.js"></script>
+<!-- Scroll to Top Button -->
+<button id="scrollToTopBtn" class="fixed bottom-6 right-6 bg-blue-600 text-white p-3 rounded-full shadow-lg hover:bg-blue-700 transition-all duration-300 hidden">
+    &uarr;
+</button>
+
+<script>
+    const scrollToTopBtn = document.getElementById("scrollToTopBtn");
+
+    // Show/hide button on scroll
+    window.addEventListener("scroll", () => {
+        if (window.scrollY > 200) {
+            scrollToTopBtn.classList.remove("hidden");
+        } else {
+            scrollToTopBtn.classList.add("hidden");
+        }
+    });
+
+    // Scroll to top smoothly
+    scrollToTopBtn.addEventListener("click", () => {
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        });
+    });
+</script>
+
+
+
+</body>
+</html>

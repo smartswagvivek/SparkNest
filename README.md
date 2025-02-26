@@ -31,7 +31,7 @@ Eager to run this portfolio on your own machine? Here’s how:
 ## 📞 Let’s Connect!
 I’m always excited to meet new people and explore collaboration opportunities. Feel free to reach out:
 - 📧 **Email**: [vivek0908@gmail.com](mailto:vivek0908@gmail.com)
-- 🔗 **LinkedIn**: [Your LinkedIn Profile](https://www.linkedin.com/in/vivek-hs09082004/) (Don’t forget to link your profile!)
+- 🔗 **LinkedIn**: [ LinkedIn Profile](https://www.linkedin.com/in/vivek-hs09082004/) (Don’t forget to link your profile!)
 
 Thank you for visiting! I hope you find inspiration here, as I continue to evolve and create in the world of [Your Field or Industry, e.g., technology, design, etc.]. Let’s make something amazing together! 💫
 

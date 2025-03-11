@@ -123,21 +123,62 @@
     </script>
 
     <!-- Navbar -->
+       <!-- Navbar -->
     <nav class="fixed inset-x-0 top-0 z-30 mx-auto w-full max-w-screen-md bg-blue-200 rounded-md bg-clip-padding backdrop-filter backdrop-blur-sm bg-opacity-10 py-4 md:top-6 md:rounded-3xl lg:max-w-screen-lg">
         <div class="container mx-auto flex justify-between items-center">
             <a href="index.html" class="text-2xl font-bold pl-10">SparkNest</a>
-            <div>
-                <div class="nav-links">
-                    <a href="index.html" class="mx-4 hover:underline">Home</a>
-                    <a href="about.html" class="mx-4 hover:underline">About Me</a>
-                    <a href="skills.html" class="mx-4 hover:underline">Skills</a>
-                    <a href="projects.html" class="mx-4 hover:underline">Projects</a>
-                    <a href="certifications.html" class="mx-4 hover:underline">Certifications</a>
-                    <a href="contact.html" class="mx-4 hover:underline">Contact</a>
-                </div>
+            <div class="hidden md:flex nav-links">
+                <a href="index.html" class="mx-4 hover:underline">Home</a>
+                <a href="about.html" class="mx-4 hover:underline">About Me</a>
+                <a href="skills.html" class="mx-4 hover:underline">Skills</a>
+                <a href="projects.html" class="mx-4 hover:underline">Projects</a>
+                <a href="certifications.html" class="mx-4 hover:underline">Certifications</a>
+                <a href="contact.html" class="mx-4 hover:underline">Contact</a>
             </div>
+            <button id="menu-toggle" class="md:hidden p-2 rounded focus:outline-none">
+                <span class="block w-6 h-1 bg-black mb-1"></span>
+                <span class="block w-6 h-1 bg-black mb-1"></span>
+                <span class="block w-6 h-1 bg-black"></span>
+            </button>
+        </div>
+        <div id="mobile-menu" class="md:hidden hidden flex-col bg-blue-200 rounded-md p-4 absolute top-16 left-0 right-0">
+            <a href="index.html" class="block my-2 hover:underline">Home</a>
+            <a href="about.html" class="block my-2 hover:underline">About Me</a>
+            <a href="skills.html" class="block my-2 hover:underline">Skills</a>
+            <a href="projects.html" class="block my-2 hover:underline">Projects</a>
+            <a href="certifications.html" class="block my-2 hover:underline">Certifications</a>
+            <a href="contact.html" class="block my-2 hover:underline">Contact</a>
         </div>
     </nav>
+    <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+    const mobileMenu = document.getElementById('mobile-menu');
+    mobileMenu.classList.toggle('active'); // Toggle visibility of the mobile menu
+});
+    </script>
+    <style>
+        /* Base styles */
+#mobile-menu {
+    display: none; /* Hidden by default */
+}
+
+/* Show mobile menu when it has "active" class (JavaScript will add/remove this class) */
+#mobile-menu.active {
+    display: flex; /* Use flexbox to display links vertically */
+}
+
+/* Media query for screens 360px or smaller */
+@media (max-width: 360px) {
+    #mobile-menu {
+        flex-direction: column; /* Stack links vertically */
+        width: 100%; /* Full width */
+    }
+
+    .nav-links {
+        display: none; /* Hide nav links on smaller screens */
+    }
+}
+    </style>
     <br>
 
     <!-- Skills Section -->
